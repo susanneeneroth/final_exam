@@ -11,33 +11,22 @@
 </head>
 
 <body>
+  <div id="myapp" v-cloak>
+    <header>
+      <h1>Movie Search</h1>
+      <form id="form">
+        <input type="text" id="search" v-model="searchValue" placeholder="Enter a Movie...">
+        <button class="btn-search">Search</button>
+      </form>
+    </header>
 
-  <header>
-    <h1>Movie Search</h1>
-
-    <form id="form">
-      <input type="text" id="search" v-model="searchValue" placeholder="Enter a Movie...">{{searchValue}}
-      <button class="btn-search">Search</button>
-    </form>
-  </header>
-
-  <div class="wrapper">
-    <div id="myapp">
+    <div class="wrapper">
       <div class="card-columns">
         <div class="card" style="width: 18rem;" v-for="post in posts">
           <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
           <div class="card-body">
-            <h5 class="card-title">{{posts.title}}</h5>
-            <p class="card-text">{{posts.overview}}
-            </p>
-            <a href="#" class="btn btn-dark">Movie Details</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;" v-for="post in posts.results">
-          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-          <div class="card-body">
-            <h5 class="card-title">{{posts.title}}</h5>
-            <p class="card-text">{{posts.overview}}
+            <h5 class="card-title" :key="post.id">{{post.title}}</h5>
+            <p class="card-text">{{post.overview}}
             </p>
             <a href="#" class="btn btn-dark">Movie Details</a>
           </div>
@@ -46,12 +35,13 @@
 
     </div>
   </div>
+  </div>
   <footer class="footer-container">
     <div class="footer-container__text">Made with vuejs... maybe... hopefully...</div>
-
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="src/main.js"></script>
 </body>
 

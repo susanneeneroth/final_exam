@@ -5,22 +5,51 @@ new Vue({
     apiKey: '2f5c977f1fe4c5d58ff8c30431e6d7c8',
     searchValue: '',
     posts: [],
-    page: 2
+    page: 2,
+    movies: []
   },
 
-
-
-  // methods: {
-  //   showInfo: function (name) {
-  //     console.log(name);
+  // computed: {
+  //   filteredMovies: function () {
+  //     return this.movies.filter((movie) => {
+  //       let lowerMovie = movie.toLowerCase();
+  //       let lowerSearchValue = this.searchValue.toLowerCase();
+  //       return lowerMovie.includes(lowerSearchValue);
+  //     });
   //   }
   // },
 
-  mounted: function () {
-    fetch("https://api.themoviedb.org/3/movie/popular?api_key=2f5c977f1fe4c5d58ff8c30431e6d7c8")
-      .then(response => response.json())
-      .then(postResponse => {
-        this.posts = postResponse.results;
-      })
+  watch: {
+    searchValue: function (value, oldValue) {
+      console.log(value, oldValue);
+    }
+  },
+
+  methods: {
+    getPopularMovies() {
+      fetch("https://api.themoviedb.org/3/movie/popular?api_key=2f5c977f1fe4c5d58ff8c30431e6d7c8")
+        .then(response => response.json())
+        .then(res => {
+          if (this.searchValue) {
+            this.posts = res.results.filter(posts =>
+              posts.name.toLowerCase().includes(this.searchValue.toLowerCase())
+            );
+          } else {
+            this.posts = res.results;
+          }
+        });
+    }
+  },
+  created() {
+    this.getPopularMovies();
   }
+
+  // mounted: function () {
+  //   fetch("https://api.themoviedb.org/3/movie/popular?api_key=2f5c977f1fe4c5d58ff8c30431e6d7c8")
+  //     .then(response => response.json())
+  //     .then(postResponse => {
+  //       this.posts = postResponse.results;
+  //     })
+  //     .catch(error => console.log(error))
+  // }
 })
