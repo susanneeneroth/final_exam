@@ -6,7 +6,6 @@ new Vue({
     searchValue: '',
     posts: [],
     page: 2,
-    movies: []
   },
 
   // computed: {
@@ -18,6 +17,8 @@ new Vue({
   //     });
   //   }
   // },
+
+
 
   watch: {
     searchValue: function (value, oldValue) {
@@ -42,7 +43,15 @@ new Vue({
   },
   created() {
     this.getPopularMovies();
-  }
+  },
+
+  // computed: {
+  //   getPopularMovies() {
+  //     return this.posts.filter(posts => {
+  //       return posts.title.toLowerCase().includes(this.searchValue.toLowerCase())
+  //     })
+  //   }
+  // }
 
   // mounted: function () {
   //   fetch("https://api.themoviedb.org/3/movie/popular?api_key=2f5c977f1fe4c5d58ff8c30431e6d7c8")

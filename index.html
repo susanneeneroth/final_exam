@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div id="myapp" v-cloak>
+  <div id="myapp">
     <header>
       <h1>Movie Search</h1>
       <form id="form">
@@ -22,10 +22,10 @@
 
     <div class="wrapper">
       <div class="card-columns">
-        <div class="card" style="width: 18rem;" v-for="post in posts">
+        <div class="card" style="width: 18rem;" v-for="post in searchValue">
           <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
           <div class="card-body">
-            <h5 class="card-title" :key="post.id">{{post.title}}</h5>
+            <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">{{post.overview}}
             </p>
             <a href="#" class="btn btn-dark">Movie Details</a>
@@ -34,9 +34,10 @@
       </div>
 
     </div>
+    <div class="push"></div>
   </div>
-  </div>
-  <footer class="footer-container">
+
+  <footer class="footer-container footer">
     <div class="footer-container__text">Made with vuejs... maybe... hopefully...</div>
   </footer>
 
