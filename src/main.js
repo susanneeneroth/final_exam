@@ -3,10 +3,12 @@ new Vue({
   el: "#myapp",
   data: {
     apiKey: '2f5c977f1fe4c5d58ff8c30431e6d7c8',
+    // searchButton: '',
     searchValue: '',
     posts: [],
-    page: 2,
+    query: ''
   },
+
 
   // computed: {
   //   filteredMovies: function () {
@@ -28,7 +30,7 @@ new Vue({
 
   methods: {
     getPopularMovies() {
-      fetch("https://api.themoviedb.org/3/movie/popular?api_key=2f5c977f1fe4c5d58ff8c30431e6d7c8")
+      fetch("https://api.themoviedb.org/3/search/movie?api_key=2f5c977f1fe4c5d58ff8c30431e6d7c8")
         .then(response => response.json())
         .then(res => {
           if (this.searchValue) {

@@ -16,7 +16,7 @@
       <h1>Movie Search</h1>
       <form id="form">
         <input type="text" id="search" v-model="searchValue" placeholder="Enter a Movie...">
-        <button class="btn-search">Search</button>
+        <!-- <button class=" btn-search">Search</button> -->
       </form>
     </header>
 
@@ -24,7 +24,7 @@
       <div class="card-columns">
         <div class="card" style="width: 18rem;" v-for="post in searchValue">
           <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-          <div class="card-body">
+          <div class="card-body">{{post.results}}
             <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">{{post.overview}}
             </p>
