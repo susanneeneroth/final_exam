@@ -1,16 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 #myapp {
 	min-height: 100%;
 }
 
 * {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html,
 body {
-	background-color: #fff;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Lato', sans-serif;
 	margin: 0;
+	transition: transform 0.3s ease;
 	height: 100%;
 }
 
@@ -67,6 +71,10 @@ header h1 {
 	margin: 0 0 30px;
 }
 
+.card-text {
+	color: #000;
+}
+
 form {
 	position: relative;
 	width: 450px;
@@ -102,18 +110,18 @@ form button {
 }
 
 .btn-search:hover {
-	background-color: pink !important;
+	background-color: rgb(91, 59, 78) !important;
 }
 
 .btn-dark:hover {
-	background-color: pink !important;
+	background-color: rgb(91, 59, 78) !important;
 }
 
 .footer-container {
 	background-color: rgb(33, 31, 41);
 	color: #fff;
-	font-family: Arial, Helvetica, sans-serif;
-	height: 300px;
+	font-family: 'Lato', sans-serif;
+	height: 70px;
 	width: 100%;
 	position: relative;
 }
@@ -123,5 +131,174 @@ form button {
 	bottom: 0;
 	text-align: center;
 	width: 100%;
-	padding: 30px;
+	padding: 20px;
+}
+
+/* Modal didn´t work */
+/* button,
+[type='submit'] {
+	background-color: rgb(33, 31, 41);
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	padding: 8px 12px;
+}
+
+button:focus {
+	outline: none;
+}
+
+.cta-btn {
+	padding: 6px 20px;
+	font-size: 16px;
+}
+
+.modal-container {
+	background-color: rgba(0, 0, 0, 0.6);
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.modal-container.show-modal {
+	display: block;
+}
+
+.modal {
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	position: absolute;
+	overflow: hidden;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 100%;
+	width: 400px;
+	animation-name: modalopen;
+	animation-duration: var(--modal-duration);
+}
+
+.modal-header {
+	background-color: var(--primary-color);
+	color: #fff;
+	padding: 15px;
+	border-bottom: 0;
+}
+
+.modal-header h3 {
+	margin: 0;
+}
+
+.modal-content {
+	padding: 20px;
+}
+
+.modal-form div {
+	margin: 15px 0;
+}
+
+.modal-form label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.modal-form .form-input {
+	padding: 8px;
+	width: 100%;
+}
+
+.close-btn {
+	background: transparent;
+	font-size: 25px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+@keyframes modalopen {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+} */
+
+/* modal */
+
+#app {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+.button {
+	appearance: none;
+	outline: none;
+	border: none;
+	background: none;
+	background-color: rgb(33, 31, 41);
+	cursor: pointer;
+	display: inline-block;
+	font-size: 18px;
+	transition: 0.4 ease;
+	border-radius: 5px;
+	color: #fff;
+	padding: 4px 12px;
+	position: relative;
+	left: 20px;
+}
+
+.modal-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 98;
+	background-color: #fff;
+}
+
+.modal  {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 99;
+	width: 100%;
+	max-width: 400px;
+	background-color: #fff;
+	border-radius: 16px;
+	padding: 25px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 1.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
+}
+
+h1 {
+	font-size: 22px;
+	font-family: 'Lato', sans-serif;
+	padding: 20px 0 0 20px;
+	margin-bottom: 0;
+}
+
+.modal-text {
+	padding: 10px 20px 0 20px;
 }

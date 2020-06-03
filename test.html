@@ -1,45 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-  <style>
-    [v-cloak] {
-      display: none
-    }
-  </style>
-  <link rel="stylesheet" href="test.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
 <body>
 
-  <div class='bg'> </div>
-  <div class='container'>
-    <div class='favourite'>
+  <template>
+    <div class="modal-backdrop">
+      <div class="modal">
+        <header class="modal-header">
+          <slot name="header">
+            This is the default tile!
 
+            <button type="button" class="btn-close" @click="close">
+              x
+            </button>
+          </slot>
+        </header>
+        <section class="modal-body">
+          <slot name="body">
+            I'm the default body!
+          </slot>
+        </section>
+        <footer class="modal-footer">
+          <slot name="footer">
+            I'm the default footer!
+
+            <button type="button" class="btn-green" @click="close">
+              Close me!
+            </button>
+          </slot>
+        </footer>
+      </div>
     </div>
-    <form class='form'>
-      <input type='search' placeholder='search a film'>
-      <button type='submit'> Search </button>
-      <i class="fa fa-star view-fav" aria-hidden="true"></i>
+  </template>
 
-    </form>
-    <div class='error'> </div>
-  </div>
-  <div class='selectedFilm'> </div>
-  <div class='container'>
-
-    <ul class='films'>
-
-    </ul>
-  </div>
-  <div id='result'> </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="test.js"></script>
+
+  <script>
+    export default {
+      name: 'modal',
+
+      methods: {
+        close() {
+          this.$emit('close');
+        },
+      },
+    };
+  </script>
+
 </body>
 
 </html>

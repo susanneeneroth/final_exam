@@ -11,24 +11,34 @@
 </head>
 
 <body>
+
   <div id="myapp">
     <header>
       <h1>Movie Search</h1>
       <form id="form">
         <input type="text" id="search" v-model="searchValue" placeholder="Enter a Movie...">
-        <!-- <button class=" btn-search">Search</button> -->
+        <button class=" btn-search">Search</button>
       </form>
     </header>
 
     <div class="wrapper">
       <div class="card-columns">
-        <div class="card" style="width: 18rem;" v-for="post in searchValue">
-          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-          <div class="card-body">{{post.results}}
+        <div class="card" style="width: 18rem;" v-for="post in posts">
+          <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">{{post.overview}}
             </p>
-            <a href="#" class="btn btn-dark">Movie Details</a>
+            <button class="btn btn-dark cta-btn" id="myBtn" @click="showModal = true">Movie Details</button>
+            <transition name="fade" appear>
+              <div id="showModal" class="modal-overlay" v-if="showModal" @click="showModal = false">
+                <h1 class="modal-heading">Lorem ipsum</h1>
+                <p class="modal-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti soluta cumque
+                  similique ipsum
+                  illum
+                  enim corporis modi facere nobis recusandae?</p>
+                <button class="button" @click="showModal = false">Close</button>
+              </div>
+            </transition>
           </div>
         </div>
       </div>
@@ -37,6 +47,41 @@
     <div class="push"></div>
   </div>
 
+
+  <!-- Modal test -->
+  <!-- <div class="modal-container" id="modal">
+    <div class="modal">
+      <button class="close-btn" id="close">
+        <i class="fa fa-times"></i>
+      </button>
+      <div class="modal-header">
+        <h3>Sign Up</h3>
+      </div>
+      <div class="modal-content">
+        <p>Register with us to get offers, support and more</p>
+        <form class="modal-form">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter Name" class="form-input" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter Email" class="form-input" />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter Password" class="form-input" />
+          </div>
+          <div>
+            <label for="password2">Confirm Password</label>
+            <input type="password" id="password2" placeholder="Confirm Password" class="form-input" />
+          </div>
+          <input type="submit" value="Submit" class="submit-btn" />
+        </form>
+      </div>
+    </div>
+  </div> -->
+
   <footer class="footer-container footer">
     <div class="footer-container__text">Made with vuejs... maybe... hopefully...</div>
   </footer>
@@ -44,6 +89,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="src/main.js"></script>
+  <script src="src/script.js"></script>
 </body>
 
 </html>
