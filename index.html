@@ -17,31 +17,29 @@
       <h1>Movie Search</h1>
       <form id="form">
         <input type="text" id="search" v-model="searchValue" placeholder="Enter a Movie...">
-        <button class=" btn-search">Search</button>
+        <button class=" btn-search" @click="searchValue">Search</button>
       </form>
     </header>
 
     <div class="wrapper">
-      <div class="card-columns">
+      <div class="card-columns flex-row">
         <div class="card" style="width: 18rem;" v-for="post in posts">
           <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">{{post.overview}}
             </p>
-            <button class="btn btn-dark cta-btn" id="myBtn" @click="showModal = true">Movie Details</button>
-            <transition name="fade" appear>
-              <div id="showModal" class="modal-overlay" v-if="showModal" @click="showModal = false">
-                <h1 class="modal-heading">Lorem ipsum</h1>
-                <p class="modal-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti soluta cumque
-                  similique ipsum
-                  illum
-                  enim corporis modi facere nobis recusandae?</p>
-                <button class="button" @click="showModal = false">Close</button>
-              </div>
-            </transition>
+            <button class="btn btn-dark cta-btn" id="myBtn" v-on:click="showModal = !showModal">Movie Details</button>
+
           </div>
         </div>
       </div>
+      <transition name="fade" appear>
+        <div id="showModal" class="modal-overlay" v-if="showModal" v-for="post in posts">
+          <h1 class="modal-heading">{{post.title}}</h1>
+          <p class="modal-text">{{post.overview}}</p>
+          <button class="button" @click="showModal = false">Close</button>
+        </div>
+      </transition>
 
     </div>
     <div class="push"></div>
@@ -89,7 +87,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="src/main.js"></script>
-  <script src="src/script.js"></script>
+  <!-- <script src="src/script.js"></script> -->
 </body>
 
 </html>
